@@ -34,7 +34,7 @@
 				}
 			},
 			{
-				"name": "Get Metadata1",
+				"name": "Get Metadata2",
 				"type": "GetMetadata",
 				"dependsOn": [
 					{
