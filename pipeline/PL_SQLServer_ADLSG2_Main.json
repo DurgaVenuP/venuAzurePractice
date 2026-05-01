@@ -49,20 +49,19 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Set variable1",
-							"type": "SetVariable",
+							"name": "ExecuteCopyPipeline",
+							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"policy": {
-								"secureOutput": false,
 								"secureInput": false
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "venu",
-								"value": {
-									"value": "@item().TableName",
-									"type": "Expression"
-								}
+								"pipeline": {
+									"referenceName": "PL_CopyActivity_Child1",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
 							}
 						}
 					]
