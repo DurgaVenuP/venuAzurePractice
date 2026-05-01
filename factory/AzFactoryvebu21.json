@@ -1,0 +1,15 @@
+{
+	"name": "AzFactoryvebu21",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4a85dd49-31f0-4166-8dbe-2dbe29eeaf2d",
+		"tenantId": "d6152be6-b454-4776-afd2-c922d15b5ddb"
+	}
+}
