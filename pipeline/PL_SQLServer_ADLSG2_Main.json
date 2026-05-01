@@ -46,10 +46,31 @@
 						"value": "@activity('LookupWatermarkTable').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "venu",
+								"value": "sasas"
+							}
+						}
+					]
 				}
 			}
 		],
+		"variables": {
+			"venu": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
