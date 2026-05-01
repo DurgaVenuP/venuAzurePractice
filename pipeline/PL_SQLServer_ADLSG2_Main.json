@@ -59,7 +59,10 @@
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "venu",
-								"value": "sasas"
+								"value": {
+									"value": "@item().TableName",
+									"type": "Expression"
+								}
 							}
 						}
 					]
