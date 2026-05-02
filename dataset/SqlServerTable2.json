@@ -3,17 +3,7 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "onpreSQLServer",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"tableschema": {
-					"value": "@pipeline().parameters.TableSchema",
-					"type": "Expression"
-				},
-				"tablename": {
-					"value": "@pipeline().parameters.TableName",
-					"type": "Expression"
-				}
-			}
+			"type": "LinkedServiceReference"
 		},
 		"parameters": {
 			"tablename": {
