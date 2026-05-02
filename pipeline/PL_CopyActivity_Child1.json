@@ -117,7 +117,17 @@
 							"outputs": [
 								{
 									"referenceName": "Parquet2",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"tableschema": {
+											"value": "@pipeline().parameters.TableSchema",
+											"type": "Expression"
+										},
+										"tablename": {
+											"value": "@pipeline().parameters.TableName",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
