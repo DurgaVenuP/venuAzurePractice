@@ -166,7 +166,7 @@
 										"type": "Expression"
 									},
 									"MaxValue": {
-										"value": "@activity('LookupMaxValinTable').output.value",
+										"value": "@activity('LookupMaxValinTable').output.firstRow.MaxValue",
 										"type": "Expression"
 									}
 								}
