@@ -7,16 +7,6 @@
 		},
 		"annotations": [],
 		"type": "SqlServerTable",
-		"schema": [],
-		"typeProperties": {
-			"schema": {
-				"value": "@pipeline().parameters.TableSchema",
-				"type": "Expression"
-			},
-			"table": {
-				"value": "@pipeline().parameters.TableName",
-				"type": "Expression"
-			}
-		}
+		"schema": []
 	}
 }
