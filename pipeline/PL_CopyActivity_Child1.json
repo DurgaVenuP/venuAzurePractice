@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "LookupMaxWatermark",
+				"name": "LookupMaxValinTable",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -28,6 +28,82 @@
 						"referenceName": "SqlServerTable2",
 						"type": "DatasetReference"
 					}
+				}
+			},
+			{
+				"name": "CheckMaxColValue",
+				"description": "To check if Maximum value in table column is greater than Lastload value in Watermark table.",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "LookupMaxValinTable",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@or(equals(pipeline().parameters.LastLoadValue, null ), greater(int(activity('LookupMaxValinTable').output.value),int(pipeline().parameters.LastLoadValue)))",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "CopyTable",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": {
+										"value": "@concat(\r\n    'SELECT * FROM ',\r\n    pipeline().parameters.TableSchema, '.', pipeline().parameters.TableName,\r\n    if(\r\n        equals(pipeline().parameters.LastLoadValue, null),\r\n        '', \r\n        concat(\r\n            ' WHERE ', pipeline().parameters.WatermarkColumn,\r\n            ' > ''', pipeline().parameters.LastLoadValue, ''''\r\n        )\r\n    )\r\n)",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "SqlServerTable1",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Parquet2",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
 				}
 			}
 		],
