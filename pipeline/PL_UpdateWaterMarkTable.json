@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"storedProcedureName": {
-						"value": "USE [RetailDW_Dev]\nGO\nSET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\nALTER PROCEDURE [dbo].[UpdateWatermark]\n@TableSchema VARCHAR(50),\n@TableName VARCHAR(100),\n@WatermarkColumn VARCHAR(100),\n@MaxVal BIGINT -- This is the value you calculated at the start of your pipeline\nAS\nBEGIN\n\n-- Updates the tracking table with the specific max value you sent\nUPDATE dbo.ADF_Watermark_Table\nSET LastLoadValue = @MaxVal\nWHERE TableName = @TableName \n  AND TableSchema = @TableSchema \n\nEND",
+						"value": "[dbo].[UpdateWatermark]",
 						"type": "Expression"
 					},
 					"storedProcedureParameters": {
