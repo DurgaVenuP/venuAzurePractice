@@ -56,7 +56,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@or(equals(pipeline().parameters.LastLoadValue, null ), greater(int(activity('LookupMaxValinTable').output.value),int(pipeline().parameters.LastLoadValue)))",
+						"value": "@or(equals(pipeline().parameters.LastLoadValue, null ), greater(int(activity('LookupMaxValinTable').output.firstRow.MaxValue),int(pipeline().parameters.LastLoadValue)))",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
