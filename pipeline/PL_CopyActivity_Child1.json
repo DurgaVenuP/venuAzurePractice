@@ -147,6 +147,10 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PL_UpdateWaterMarkTable",
+									"type": "PipelineReference"
+								},
 								"waitOnCompletion": true
 							}
 						}
