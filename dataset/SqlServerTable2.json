@@ -3,7 +3,17 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "onpreSQLServer",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"tableschema": {
+					"value": "@pipeline().parameters.TableSchema",
+					"type": "Expression"
+				},
+				"tablename": {
+					"value": "@pipeline().parameters.TableName",
+					"type": "Expression"
+				}
+			}
 		},
 		"annotations": [],
 		"type": "SqlServerTable",
@@ -25,10 +35,6 @@
 				"type": "bigint",
 				"precision": 19
 			}
-		],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": "ADF_Watermark_Table"
-		}
+		]
 	}
 }
