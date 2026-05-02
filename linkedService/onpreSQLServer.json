@@ -2,6 +2,15 @@
 	"name": "onpreSQLServer",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"description": "To get",
+		"parameters": {
+			"schemaname": {
+				"type": "string"
+			},
+			"tablename": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
@@ -11,7 +20,7 @@
 			"trustServerCertificate": false,
 			"authenticationType": "SQL",
 			"userName": "MigrationUser",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2YWZjMGUzMC01NzEyLTRjZDgtOGVhNS02YzU3N2FjM2I1MDMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4N2E4MTliNC1kOTQyLTQ0NzYtOTI0Ny1jNzQ1MjU1ZTY2NTAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "selfHostedIR",
