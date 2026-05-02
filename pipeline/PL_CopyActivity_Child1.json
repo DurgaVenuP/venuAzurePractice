@@ -130,6 +130,25 @@
 									}
 								}
 							]
+						},
+						{
+							"name": "ExecuteUpdateWatermarkTable",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "CopyTable",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"waitOnCompletion": true
+							}
 						}
 					]
 				}
