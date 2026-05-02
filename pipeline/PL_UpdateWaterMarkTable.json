@@ -14,6 +14,42 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": {
+						"value": "USE [RetailDW_Dev]\nGO\nSET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\nALTER PROCEDURE [dbo].[UpdateWatermark]\n@TableSchema VARCHAR(50),\n@TableName VARCHAR(100),\n@WatermarkColumn VARCHAR(100),\n@MaxVal BIGINT -- This is the value you calculated at the start of your pipeline\nAS\nBEGIN\n\n-- Updates the tracking table with the specific max value you sent\nUPDATE dbo.ADF_Watermark_Table\nSET LastLoadValue = @MaxVal\nWHERE TableName = @TableName \n  AND TableSchema = @TableSchema \n\nEND",
+						"type": "Expression"
+					},
+					"storedProcedureParameters": {
+						"TableSchema": {
+							"value": {
+								"value": "@pipeline().parameters.TableSchema",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"TableName": {
+							"value": {
+								"value": "@pipeline().parameters.TableName",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"WatermarkColumn": {
+							"value": {
+								"value": "@pipeline().parameters.WaterMarkColumn",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"MaxVal": {
+							"value": {
+								"value": "@pipeline().parameters.MaxValue",
+								"type": "Expression"
+							},
+							"type": "Int64"
+						}
+					}
+				},
 				"linkedServiceName": {
 					"referenceName": "onpreSQLServer",
 					"type": "LinkedServiceReference"
