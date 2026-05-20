@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
+				"name": "Lookup_L2Type",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -13,7 +13,64 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "SELECT DISTINCT L2_switch_type FROM dbo.vb_tbl_job a JOIN dbo.vb_tbl_trigger b ON a.trigger_id = b.trigger_id\nWHERE b.trigger_name = '@{pipeline().parameters.Trigger}'\n",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AZ_SQL_DATABASE",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Switch_Source",
+				"type": "Switch",
+				"dependsOn": [
+					{
+						"activity": "Lookup_L2Type",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@activity('Lookup_L2Type').output.firstRow.L2_switch_type",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "CloudStorage"
+						},
+						{
+							"value": "API"
+						},
+						{
+							"value": "sql"
+						},
+						{
+							"value": "sftp"
+						},
+						{
+							"value": "snowflake"
+						},
+						{
+							"value": "json"
+						},
+						{
+							"value": "bulk"
+						}
+					]
+				}
 			}
 		],
 		"parameters": {
