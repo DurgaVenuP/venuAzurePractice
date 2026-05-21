@@ -20,7 +20,10 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation"
+				"type": "AzureBlobFSLocation",
+				"fileName": "olist_order_payments_dataset.csv",
+				"folderPath": "CloudStorage",
+				"fileSystem": "rawinputfiles"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
