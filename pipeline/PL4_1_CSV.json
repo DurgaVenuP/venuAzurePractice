@@ -227,7 +227,7 @@
 					{
 						"activity": "COPY-CSV",
 						"dependencyConditions": [
-							"Succeeded"
+							"Failed"
 						]
 					}
 				],
