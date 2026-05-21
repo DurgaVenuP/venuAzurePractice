@@ -1,0 +1,11 @@
+{
+	"name": "EXEC_PL4_1_CSV",
+	"properties": {
+		"parameters": {
+			"Trigger": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
