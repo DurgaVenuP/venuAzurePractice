@@ -61,7 +61,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"pipeline": {
-											"referenceName": "EXEC_PL4_1_CSV",
+											"referenceName": "PL4_1_CSV",
 											"type": "PipelineReference"
 										},
 										"waitOnCompletion": true,
@@ -85,7 +85,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"pipeline": {
-											"referenceName": "EXEC_PL4_2_EXCEL",
+											"referenceName": "PL4_2_EXCEL",
 											"type": "PipelineReference"
 										},
 										"waitOnCompletion": true
