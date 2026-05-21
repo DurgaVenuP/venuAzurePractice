@@ -67,7 +67,7 @@
 										"waitOnCompletion": true,
 										"parameters": {
 											"Trigger": {
-												"value": "@activity('Lookup_L2Type').output.firstRow.L2_switch_type",
+												"value": "@pipeline().parameters.Trigger",
 												"type": "Expression"
 											}
 										}
