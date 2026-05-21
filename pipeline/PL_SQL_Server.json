@@ -28,7 +28,9 @@
 							"maxConcurrentConnections": 0
 						},
 						"formatSettings": {
-							"type": "ParquetWriteSettings"
+							"type": "ParquetWriteSettings",
+							"maxRowsPerFile": 5,
+							"fileNamePrefix": "venu_"
 						}
 					},
 					"enableStaging": false,
