@@ -64,7 +64,10 @@
 											"referenceName": "EXEC_PL4_1_CSV",
 											"type": "PipelineReference"
 										},
-										"waitOnCompletion": true
+										"waitOnCompletion": true,
+										"parameters": {
+											"Trigger": "@pipeline().parameters.Trigger"
+										}
 									}
 								}
 							]
