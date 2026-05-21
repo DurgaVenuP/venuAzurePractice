@@ -5,17 +5,6 @@
 			"referenceName": "ADLS_CSV_LNK",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"Storage_Account_Location": {
-				"type": "string"
-			},
-			"Column_Delimiter": {
-				"type": "string"
-			},
-			"Filename": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
